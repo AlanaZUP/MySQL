@@ -29,3 +29,99 @@
 - Dentro das procedures, posso também ter `Funções`, cálculos que faço com os campos. O próprio banco de dados, já tem um catálogo de funções já prontas, mas é possível construir funções próprias e usá-la.
 
 - ``Trigger`` é um aviso, um alerta que programo caso alguma coisa aconteça no banco de dados ou na tabela. Ele pode realizar um fazer um processo, que pode ser uma função, uma procedure ou um único comando SQL, que seja executado quando a condição da trigger for satisfeita.
+
+
+### Comandos iniciais
+
+Para criarmos uma Database, ou um esquema, nós usamos o sequinte comando:
+
+```sql
+CREATE {DATABASE | SCHEMA} [IF NOT EXISTS] db_name
+    [create_option] ...
+
+create_option: [DEFAULT] {
+    CHARACTER SET [=] charset_name
+  | COLLATE [=] collation_name
+  | ENCRYPTION [=] {'Y' | 'N'}
+}
+```
+
+```sql
+CREATE SCHEMA orangetalents DEFAULT CHARACTER SET utf8;
+```
+
+
+Para deletarmos uma Database, ou um esquema, nós usamos o sequinte comando:
+
+```sql
+DROP {DATABASE | SCHEMA} [IF EXISTS] db_name
+```
+
+```sql
+DROP orangetalents;
+```
+
+
+### Tipos de dados
+
+- Inteiros
+
+| Tipo | Valor em Bytes | Menor Valor - Signed| Menor Valor - Unsigned | Maior Valor - Signed| Maior Valor - Unsigned |
+| ---- | :-----: | :----: | :----:  | :----: | :----:  |
+| TINYINT | 1 | -128  | 0 | 127 | 255  |
+| SMALLINT | 2 | -32768  | 0 | 32767 | 65535  |
+| MEDIUMINT | 3 | -8388608  | 0 | 8388607 | 16777215  |
+| INT | 4 | -2147483648  | 0 | 2147483647 | 4294967295  |
+| BIGINT | 8 | -2xE63  | 0 | 2xE63-1 | -2xE64-1  |
+
+
+- Reais:
+    - FLOAT (4 bytes)
+    - DOUBLE (8 bytes)
+
+- Fixos:
+    - DECIMAL ou NUMERIC (65 dígitos)
+
+
+- Único:
+    - BIT (64 bits)
+
+- Atributos campos númericos:
+    - SIGNED ou UNSIGNED - possuir sinal ou não no ´numero
+    - ZEROFILL - Preenche com Zeros os espaços
+    - AUTO_INCREMENT - sequencia auto incrementada
+    * **Erro OUT OF RANGE** - quando os valores estourarem os limites  
+
+
+- Data e hora:
+    - DATE - 1000-01-01 até 9999-12-31
+    - DATETIME - 1000-01-01 00:00:00 até 9999-12-31 23:59:59
+    - TIMESTAMP - 1970-01-01 00:00:01 UTC até 2038-01-19
+    - TIME - -838:59:59 e 839:59:59
+    - YEAR - 1901 - 2155 (Pode ser expresso no formato 2 ou 4 dígitos)
+
+- STRINGS:
+    - CHAR - valor fixo (0 a 255), preenche com espaços
+    - VARCHAR - valor variado (0 a 255)
+    - BINARY - valor fixo (0 a 255) expresso em binário
+    - VARBINARY - valor VARIADO (0 a 255) expresso em binário
+    - BLOB - binário longo:
+        - TINYBLOB
+        - BLOB
+        - MEDIUMBLOB
+        - LONGBLOB
+    - TEXT - texto longo:
+        - TINYTEXT
+        - TEXT
+        - MEDIUMTEXT
+        - LONGTEXT
+    - ENUM - armazena lista pré-definida de valores
+
+- Atributos campos Strings:
+    - SET e COLLATE - conjunto de caracteres que são suportados
+
+- SPACIAL:
+    - GEOMETRY
+    - POINT
+    - LINESTRING
+    - POLYGON
