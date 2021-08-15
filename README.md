@@ -125,3 +125,119 @@ DROP orangetalents;
     - POINT
     - LINESTRING
     - POLYGON
+
+
+### Criando tabelas
+
+```sql
+CREATE TABLE name_table(
+    CPF VARCHAR(11),
+    NOME VARCHAR(100),
+    ENDERECO1 VARCHAR(150),
+    ENDERECO2 VARCHAR(150),
+    BAIRRO VARCHAR(50),
+    CIDADE VARCHAR(50),
+    ESTADO VARCHAR(50),
+    CEP VARCHAR(8),
+    IDADE SMALLINT UNSIGNED,
+    SEXO VARCHAR(1),
+    LIMITE_CREDITO FLOAT,
+    VOLUME_COMPRA FLOAT,
+    PRIMEIRA_COMPRA BIT(1)
+    )
+```
+
+```sql
+CREATE TABLE TABELA_DE_VENDEDORAS(
+    MATRICULA VARCHAR(5),
+    NOME VARCHAR(100),
+    PERCENTUAL_COMISSAO FLOAT
+    )
+```
+
+### Apagando tabelas
+
+```sql
+DROP TABLE database.name_table
+```
+
+### Inserindo registros
+
+```sql
+USE database;
+
+INSERT INTO name_table(nome_campo1, nome_campo2, nome_campo3) VALUES (valor_campo1, valor_campo2, valor_campo3)
+
+```
+
+### Alterando registros
+
+```sql
+USE database;
+
+UPDATE name_table SET nome_campo1 = 'valor_correto' WHERE nome_campoID = 'identificação
+```
+
+### Excluindo registros
+
+```sql
+USE database;
+
+DELETE FROM name_table WHERE nome_campoID = 'identificação
+```
+
+
+### Incluindo chave primária
+
+```sql
+USE database;
+
+ALTER TABLE name_table ADD PRIMARY KEY (nome_campo);
+```
+
+
+### Incluindo colunas
+
+```sql
+USE database;
+
+ALTER TABLE name_table ADD COLUMN (nome_campo TIPO_CAMPO);
+```
+
+
+
+### Seleção de dados
+
+```sql
+USE database;
+
+SELECT * FROM name_table;
+
+SELECT campo1, campo3, campo2 FROM name_table;
+
+SELECT campo3 AS CAMPO3, campo2 AS ALEATORIO FROM name_table LIMIT 10;
+
+SELECT * FROM name_table WHERE campo1 = condicao;
+
+SELECT * FROM name_table WHERE campo1 <= condicao;
+
+SELECT * FROM name_table WHERE campo1 >= condicao;
+
+SELECT * FROM name_table WHERE campo1 <> condicao;
+
+SELECT * FROM name_table WHERE campo1 BETWEEN condicao1 AND condicao2;
+
+SELECT * FROM name_table WHERE YEAR(campo_date) = year;
+
+SELECT * FROM name_table WHERE MONTH(campo_date) = month;
+
+SELECT * FROM name_table WHERE campo1 OR campo2 ;
+```
+
+
+
+
+
+
+
+
